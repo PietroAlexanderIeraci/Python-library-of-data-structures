@@ -1,0 +1,43 @@
+#Python 3 Linked List Project
+
+class Node():
+    def __init__(self, value, next=None):
+      self.value = value
+      self.next = next
+
+class LinkedList():
+    def __init__(self, root=None):
+        self.root = root
+
+    def append(self, Node):
+        if self.root:
+            self.appendhelper(self.root, Node)
+        else:
+            self.root = Node
+    def appendhelper(self, curr, Node):
+        if curr.next:
+            self.appendhelper(curr.next)
+        else:
+            curr.next = Node
+
+    def llprint(self):
+        output = ''
+        current = self.root
+        while current:
+            output += current.value
+            if current.next:
+                output += ', '
+            else:
+                output += '.'
+            current = current.next
+        print(output)
+
+
+#---A SIMPLE TEST FOR THE LINKED LIST---
+#pietro = Node('Pietro')
+#tina = Node('Tina')
+#test = LinkedList()
+#test.append(pietro)
+#test.append(tina)
+
+#test.llprint()
