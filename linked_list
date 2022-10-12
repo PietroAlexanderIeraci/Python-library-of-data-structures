@@ -14,11 +14,38 @@ class LinkedList():
             self.appendhelper(self.root, Node)
         else:
             self.root = Node
+
     def appendhelper(self, curr, Node):
         if curr.next:
             self.appendhelper(curr.next)
         else:
             curr.next = Node
+
+    def insert(self, Node, insertpoint):
+        if insertpoint == 0:
+            t = self.root
+            self.root = Node
+            Node.next = t
+        else:
+            i = 0
+            current = self.root
+            while i+1 < insertpoint:
+                i +=1
+                current = current.next
+            t = current.next
+            current.next = Node
+            Node.next = t
+
+    def delete(self, delete):
+        if delete == 0:
+            self.root = self.root.next
+        else:
+            i = 0
+            current = self.root
+            while i+1 < delete:
+                i +=1
+                current = current.next
+            current.next = current.next.next
 
     def llprint(self):
         output = ''
